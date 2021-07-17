@@ -1,7 +1,12 @@
 <?php
     use BlogPost\BlogPost;
-    include "blogpost.php";
+
+include "blogpost.php";
     $db = new BlogPost();
+
+    $db-> updatePost('Updated Title', 'Update Content', 2);
+
+   
 
 ?>
 

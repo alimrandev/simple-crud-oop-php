@@ -9,7 +9,8 @@ use \BlogPost\Classes\Database\DB;
 
 
 class BlogPost extends DB{
-    public function getPosts(){
+    public function getPosts()
+    {
         $query = 'SELECT * FROM posts';
         if($this->connect()){
             $stmt = $this->connect()->prepare($query);
@@ -29,9 +30,17 @@ class BlogPost extends DB{
         $stmt->execute();
     }
 
+    //update post
+    public function updatePost($title, $content, $id)
+    {
+        $query = "UPDATE posts SET title = '{$title}', content = '{$content}' WHERE id = '{$id}' ";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+    }
     //delete post
 
-    public function deletePost($id){
+    public function deletePost($id)
+    {
         $query = "DELETE FROM posts WHERE id = '{$id}' ";
         $stmt = $this->connect()->prepare($query);
         $stmt->execute();
